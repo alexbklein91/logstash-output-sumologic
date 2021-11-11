@@ -11,6 +11,7 @@ module LogStash; module Outputs; class SumoLogic;
       
       @extra_headers = config["extra_headers"] ||= {}
       @source_category = config["source_category"] ||= CATEGORY_HEADER_DEFAULT
+      @stats_category = config["stats_category"] ||= CATEGORY_HEADER_DEFAULT_STATS
       @source_host = config["source_host"] ||= Socket.gethostname
       @source_name = config["source_name"] ||= NAME_HEADER_DEFAULT
       @metrics = config["metrics"]
@@ -25,13 +26,25 @@ module LogStash; module Outputs; class SumoLogic;
       headers = Hash.new
       headers.merge!(@extra_headers)
       headers[CLIENT_HEADER] = CLIENT_HEADER_VALUE
-      headers[CATEGORY_HEADER] = event.sprintf(@source_category) unless @source_category.blank?
-      headers[HOST_HEADER] = event.sprintf(@source_host) unless @source_host.blank?
-      headers[NAME_HEADER] = event.sprintf(@source_name) unless @source_name.blank?
+      headers[CATEGORY_HEADER] = event.sprintf(@source_category) unless blank?(@source_category)
+      headers[HOST_HEADER] = event.sprintf(@source_host) unless blank?(@source_host)
+      headers[NAME_HEADER] = event.sprintf(@source_name) unless blank?(@source_name)
       append_content_header(headers)
       append_compress_header(headers)
       headers
     end # def build
+
+    def build_stats()
+      headers = Hash.new
+      headers.merge!(@extra_headers)
+      headers[CLIENT_HEADER] = CLIENT_HEADER_VALUE
+      headers[CATEGORY_HEADER] = @stats_category
+      headers[HOST_HEADER] = Socket.gethostname
+      headers[NAME_HEADER] = NAME_HEADER_DEFAULT
+      headers[CONTENT_TYPE] = CONTENT_TYPE_CARBON2 
+      append_compress_header(headers)
+      headers
+    end # def build_stats
 
     private
     def append_content_header(headers)

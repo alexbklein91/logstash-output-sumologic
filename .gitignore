@@ -9,7 +9,6 @@
 .rvmrc
 bin/*
 coverage
-Gemfile.lock
 TAGS
 
 # Mac OSX ignores
@@ -20,3 +19,6 @@ TAGS
 
 # idea ignores
 .idea
+
+# Vagrant
+.vagrant
