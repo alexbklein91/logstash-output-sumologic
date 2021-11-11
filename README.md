@@ -1,5 +1,7 @@
 # Logstash Sumo Logic Output Plugin
 
+[![CIS](https://app.soluble.cloud/api/v1/public/badges/45e16f2d-32da-48c0-b0d9-965dbeb7dd72.svg)](https://app.soluble.cloud/repos/details/github.com/alexbklein91/logstash-output-sumologic)  [![IaC](https://app.soluble.cloud/api/v1/public/badges/0454009f-a0f9-4d4f-8941-7dfaea193c4c.svg)](https://app.soluble.cloud/repos/details/github.com/alexbklein91/logstash-output-sumologic)  
+
 [![Build Status](https://travis-ci.org/SumoLogic/logstash-output-sumologic.svg?branch=master)](https://travis-ci.org/SumoLogic/logstash-output-sumologic)  [![Gem Version](https://badge.fury.io/rb/logstash-output-sumologic.svg)](https://badge.fury.io/rb/logstash-output-sumologic)  [![Docker Pulls](https://img.shields.io/docker/pulls/sumologic/logstash-output-sumologic.svg)](https://hub.docker.com/r/sumologic/logstash-output-sumologic)
 
 This is an output plugin for [Logstash](https://github.com/elastic/logstash).
